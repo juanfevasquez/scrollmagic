@@ -20,6 +20,22 @@ $(document).ready(function(){
 	.setPin('#intro', {pushFollowers: false})
 	.addTo(controller);
 
+	// ----- ADDING A PARALLAX EFFECT -----
+
+	// Timeline for animations
+	var parallaxTL = new TimelineMax();
+	parallaxTL.from('.content-wrapper', 1, {autoAlpha: 0, ease: Power0.easeNone})
+			.from('.bcg', 1, {y: '-50%', ease: Power0.easeNone});
+	// parallax scene
+	var slideParallaxScene = new ScrollMagic.Scene({
+		triggerElement: '.bcg-parallax',
+		triggerHook: 1,
+		duration: '100%'
+	})
+	.setTween(parallaxTL)
+	.addTo(controller);
+
+	
 	// loop through each .project element
 	$('.project').each(function(){
 
